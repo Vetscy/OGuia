@@ -8,8 +8,36 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
+    <audio id="bgMusic" autoplay preload="auto" loop>
+        <source src="scripts/audio/A Beautiful Rose - The Walten Files - Official Soundtrack (1).mp3" type="audio/mpeg">
+    </audio>
     <div class="container">
         <img src="https://media.discordapp.net/attachments/1363702019268939829/1371603004226015354/image.png?ex=6823bc57&is=68226ad7&hm=24e24e3b123693828798acf0706582dbb59cd0405be0d63ae7476af099f72c04&=&format=webp&quality=lossless&width=542&height=350" alt="Image">
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('bgMusic');
+            audio.volume = 0.5;
+            
+            // Tenta tocar várias vezes
+            const playAttempt = setInterval(() => {
+                audio.play()
+                    .then(() => {
+                        clearInterval(playAttempt);
+                    })
+                    .catch(() => {
+                        // Continua tentando
+                    });
+            }, 1000);
+
+            // Tenta tocar em diferentes eventos
+            ['click', 'touchstart', 'keydown'].forEach(event => {
+                document.addEventListener(event, function tryPlay() {
+                    audio.play();
+                    document.removeEventListener(event, tryPlay);
+                }, { once: true });
+            });
+        });
+    </script>
 </body>
 </html>
