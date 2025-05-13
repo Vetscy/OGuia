@@ -3,41 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O̵̢͉͈̥̙͉͒͊̽̍̈́͆r̷̞̲̥̺̞̔̅͂͒͘͝d̴̟̙̺̙̩̤̽͊͂̚͝é̴̖̻̝̈́̄̇̍m̷̢̡͚̫̪̟͂̍͝ ̷̢̖͙̝̲͕͌͑̎͂͋̕͠P̵̢̨̻͙̺̱̘̈́͗͌̋͋̚̚a̷̹̘̘̘̒͛̆̐͒͌͌̕r̶̛̲̳̰̰͋̀̅̿͐́̐͜ả̸̡̜̙́̎͒̿͛͠n̴͍̟͖̯̠̤̓́̅͐́͊ơ̵̹̤̠̗͒̎͌͆͌̍ͅr̸̤̼͖͔̱̬̥̟̈́͗̏̍̑̽̕͝m̴̪̙̬͎̯̞̮̲̈́͋́͐̓̈́͘̕ǎ̷͖̬͚̐͂̀͗̅͋̈́͜l̸̡̖̳̃̿͊̒͝ ̷͕̝̝̳̔̍̔͆̓͠A̶̛̟̟͚͕̼̖̮̼̋͛̽̓̇r̵̳̤̠̙̳̫͓̗̈́̅̃̇̿͑͊r̸͚̲̘͕̳̲̜̙̾̒͌̈́̄̄͝͝è̸͕̲̰̘̠͌̿̌͂͘b̵̡̦͓͉͇͕̗̳͊͐͠a̸̛̻̥̜̜̳̞̒͐̎̍̏̈́̚t̷̢̺̜̮͗́̐̀̚͜a̶̼̤̰͓͌͗͗͂̈́̈́m̷̢͈͙̦͈̙͂̈́̾̽͒e̶̢̙͕̖̫̼͔͍̜̿̀͗͘n̷͉̞̟͖͚̼̐̇͗̈́̍̚ẗ̶̡̠͉̮͕̖̤́̀̒̐͌̚͘ö̵̠̯̗̫̰̘̜́̇͗̇̆͘͘̚
-    </title>
+    <title>O Guia - Ira Te Salvar</title>
+    <meta property="og:title" content="O Guia - Irá Te Salvar">
+    <meta property="og:description" content="Voltamos Em Breve...">
+    <meta property="og:image" content="icons/OGuia.png">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#0a1428">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <audio id="bgMusic" autoplay preload="auto" loop>
-        <source src="scripts/audio/A Beautiful Rose - The Walten Files - Official Soundtrack (1).mp3" type="audio/mpeg">
+    <audio id="bgMusic" autoplay loop preload="auto" muted>
+        <source src="scripts/audio/OGuia.mp3" type="audio/mpeg">
     </audio>
-    <div class="container">
-        <img src="https://cdn.discordapp.com/attachments/1368287327729877163/1371640544312295474/deba26bf51dc09b0d34c11aba826bb15.jpg?ex=6823df4d&is=68228dcd&hm=02b4cf64429392ea08f2a929fdbaa0f207bedd296ab4d586b1c1a4266555a01e&" alt="Image">
+    <div class="vhs-effect">
+        <div class="container">
+            <img src="icons/theguide.png" alt="The Guide">
+            <h1 class="vhs-text loading">Voltamos Em Breve</h1>
+        </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        window.onload = function() {
             const audio = document.getElementById('bgMusic');
             audio.volume = 0.5;
+            audio.muted = false;
             
-            // Tenta tocar várias vezes
-            const playAttempt = setInterval(() => {
+            function forcePlay() {
                 audio.play()
                     .then(() => {
-                        clearInterval(playAttempt);
+                        clearInterval(playInterval);
                     })
-                    .catch(() => {
-                        // Continua tentando
-                    });
-            }, 1000);
-
-            // Tenta tocar em diferentes eventos
-            ['click', 'touchstart', 'keydown'].forEach(event => {
-                document.addEventListener(event, function tryPlay() {
-                    audio.play();
-                    document.removeEventListener(event, tryPlay);
-                }, { once: true });
-            });
-        });
+                    .catch(() => {});
+            }
+            
+            forcePlay();
+            const playInterval = setInterval(forcePlay, 100);
+        };
     </script>
 </body>
 </html>
