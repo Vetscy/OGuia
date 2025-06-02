@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildpath</title>
+    <meta property="og:title" content="Wildpath">
+    <meta property="og:site_name" content="Ordem Paranormal">
+    <meta property="og:description" content="Conheça a história da Wildpath_Midia.">
+    <meta property="og:url" content="https://vetscy.github.io/OrdemParanomal/wildpath.html">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Vetscy/OrdemParanomal/main/icons/wildpath.png">
+    <meta property="og:image:secure_url" content="https://vetscy.github.io/OrdemParanomal/icons/wildpath.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Wildpath">
+    <meta name="twitter:image" content="https://vetscy.github.io/OrdemParanomal/icons/wildpath.png">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#0a1428">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* ...copied styles from index.html... */
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: rgba(10,20,40,0.7);
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
+        .menu-btn span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            margin: 4px 0;
+            background: #fff;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -220px;
+            width: 200px;
+            height: 100%;
+            background: #0a1428;
+            color: #fff;
+            z-index: 1000;
+            transition: left 0.3s;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 40px 20px;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+        }
+        .side-menu.open {
+            left: 0;
+            display: flex;
+        }
+        .side-menu .close-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5em;
+            align-self: flex-end;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .menu-title-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            margin: 0 0 18px 0;
+            background: linear-gradient(90deg, #e6e6e6 0%, #bdbdbd 100%);
+            color: #0a1428;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border: 3px double #222;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px #0008, 0 0 0 2px #fff inset;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            outline: none;
+            text-shadow: 1px 1px 0 #fff, 2px 2px 0 #bdbdbd;
+        }
+        .menu-title-btn:active {
+            background: #bdbdbd;
+            color: #333;
+            box-shadow: 0 1px 4px #0006;
+        }
+        .menu-back-btn {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            margin: 0 0 10px 0;
+            background: linear-gradient(90deg, #bdbdbd 0%, #e6e6e6 100%);
+            color: #0a1428;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1em;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            border: 2px solid #222;
+            border-radius: 4px;
+            box-shadow: 0 1px 4px #0006, 0 0 0 1px #fff inset;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            outline: none;
+            margin-bottom: 18px;
+        }
+        .menu-back-btn:active {
+            background: #bdbdbd;
+            color: #333;
+            box-shadow: 0 1px 2px #0004;
+        }
+        @media (max-width: 600px) {
+            .side-menu {
+                width: 70vw;
+                min-width: 140px;
+                max-width: 90vw;
+            }
+            .menu-title-btn {
+                font-size: 1em;
+                padding: 10px 0;
+            }
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+            scroll-padding-top: 40px;
+            scroll-behavior: smooth;
+        }
+        body {
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        ::-webkit-scrollbar {
+            width: 12px;
+            background: #0a1428;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #bdbdbd 0%, #e6e6e6 100%);
+            border-radius: 6px;
+            border: 2px solid #0a1428;
+            box-shadow: 0 0 4px #000a;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e6e6e6;
+        }
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: #bdbdbd #0a1428;
+        }
+    </style>
+</head>
+<body onload="window.scrollTo(0,0)">
+    <!-- Botão de menu hamburger -->
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <!-- Menu lateral -->
+    <nav class="side-menu" id="sideMenu" style="display:none;">
+        <button class="close-btn" id="closeMenuBtn" aria-label="Fechar menu">&times;</button>
+        <button class="menu-title-btn" id="menuTitleBtn" disabled>wildpath</button>
+        <a href="index.html" class="menu-back-btn">voltar ao site principal</a>
+        <a href="os-guias.html" class="menu-back-btn">os guias</a>
+        <a href="radio.html" class="menu-title-btn">RADIO</a>
+    </nav>
+    <div class="vhs-effect">
+        <div class="container">
+            <div style="margin-top:480px;">
+                <img src="icons/theguide.png" alt="The Guide" class="guide-icon" style="margin-top:0;">
+                <h1 class="vhs-text" style="margin-top:36px;">Wildpath</h1>
+                <img src="icons/wildpath.png" alt="Wildpath" style="display:block;margin:32px auto 0 auto;max-width:340px;width:90%;height:auto;">
+                <div style="margin-top:32px; font-family:'Courier New', Courier, monospace; color:#ffe066; font-size:1.1em; background:rgba(10,20,40,0.7); padding:24px 20px; border-radius:8px; box-shadow:0 2px 8px #000a;">
+                    A Wildpath_Midia foi fundada em <span style="color:#ffe066;font-weight:bold;">1979</span>. No começo, a gente gravava filmes e comerciais de comida, mas depois de um tempo, a empresa foi comprada e virou uma agência jornalística. Logo em seguida, se transformou numa empresa de canais de televisão. E então, em <span style="color:#ffe066;font-weight:bold;">1989</span>, se tornou a tão famosa empresa que fabricava os Guias.<br><br>
+                    Seu fundador, <span style="color:#ffb347;font-weight:bold;">Logan Hawke</span>, era o principal cabeça por trás do <span style="color:#b2ff66;font-weight:bold;">“Guia de Sobrevivência”</span>, que foi o mais vendido nos anos <span style="color:#ffe066;font-weight:bold;">80</span>, com mais de <span style="color:#ffe066;font-weight:bold;">1.504.100</span> cópias vendidas em VHS!<br><br>
+                    Logan e seu sócio, <span style="color:#ffb347;font-weight:bold;">Noah Smith</span>, tinham um acordo: um ajudava o outro e sempre pensavam juntos no que criar. Com isso, nasceu a Noah's Farmácias, que apareceu em Pinheiros, em Minas Gerais e também em Recife, fazendo sucesso com a venda de produtos de saúde.<br><br>
+                    Mas <span style="color:#ffb347;font-weight:bold;">Logan Hawke</span> nunca deixou de pensar nos seus espectadores dos Guias. Ele contratou algumas pessoas pra ajudar a escrever os novos conteúdos. Com o tempo, ele percebeu que o <span style="color:#b2ff66;font-weight:bold;">Guia de Sobrevivência</span> estava ficando meio velho (apesar de ainda ser útil), então resolveu renovar a empresa.<br><br>
+                    Foi aí que surgiram novos títulos como: "Guia de Treinamento", "Guia de Combate", entre outros. Mas o favorito de Logan sempre foi o <span style="color:#b2ff66;font-weight:bold;">"Rádio do Guia"</span>, porque ali ele podia simplesmente falar… só sobre ele..
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Menu hamburger logic
+        const menuBtn = document.getElementById('menuBtn');
+        const sideMenu = document.getElementById('sideMenu');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const menuTitleBtn = document.getElementById('menuTitleBtn');
+        function openMenu() {
+            sideMenu.style.display = 'flex';
+            setTimeout(() => sideMenu.classList.add('open'), 10);
+        }
+        menuBtn.addEventListener('click', openMenu);
+        menuTitleBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        closeMenuBtn.addEventListener('click', function() {
+            sideMenu.classList.remove('open');
+            setTimeout(() => sideMenu.style.display = 'none', 300);
+        });
+        document.addEventListener('click', function(e) {
+            if (
+                sideMenu.classList.contains('open') &&
+                !sideMenu.contains(e.target) &&
+                e.target !== menuBtn
+            ) {
+                sideMenu.classList.remove('open');
+                setTimeout(() => sideMenu.style.display = 'none', 300);
+            }
+        });
+    </script>
+</body>
+</html>
