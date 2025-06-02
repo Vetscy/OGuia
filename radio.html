@@ -191,7 +191,7 @@
                     Radio Dos Guias ¹ &nbsp;|&nbsp; Radio Dos Guias ²
                 </div>
                 <div style="margin-top:32px;display:flex;justify-content:center;">
-                    <video controls controlsList="nodownload" style="width:100%;max-width:600px;border-radius:8px;box-shadow:0 2px 8px #000a;" oncontextmenu="return false;">
+                    <video id="radioVideo" controls controlsList="nodownload" style="width:100%;max-width:600px;border-radius:8px;box-shadow:0 2px 8px #000a;" oncontextmenu="return false;">
                         <source src="Videos/Radio Dos Guias - OGuia.mp4" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>
@@ -227,6 +227,19 @@
                 sideMenu.classList.remove('open');
                 setTimeout(() => sideMenu.style.display = 'none', 300);
             }
+        });
+        // Troca para o segundo vídeo ao terminar o primeiro
+        document.addEventListener('DOMContentLoaded', function() {
+            var video = document.getElementById('radioVideo');
+            var changed = false;
+            video.addEventListener('ended', function() {
+                if (!changed) {
+                    video.src = "Videos/Radio Dos Guias 2 - OGuia.mp4";
+                    video.load();
+                    video.play();
+                    changed = true;
+                }
+            });
         });
     </script>
 </body>
