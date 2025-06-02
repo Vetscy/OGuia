@@ -191,10 +191,12 @@
                     Radio Dos Guias ¹ &nbsp;|&nbsp; Radio Dos Guias ²
                 </div>
                 <div style="margin-top:32px;display:flex;justify-content:center;">
-                    <video id="radioVideo" controls controlsList="nodownload" style="width:100%;max-width:600px;border-radius:8px;box-shadow:0 2px 8px #000a;" oncontextmenu="return false;">
-                        <source src="Videos/Radio Dos Guias - OGuia.mp4" type="video/mp4">
-                        Seu navegador não suporta o elemento de vídeo.
-                    </video>
+                    <div id="videoContainer" style="width:100%;max-width:600px;">
+                        <video id="radioVideo" controls controlsList="nodownload" style="width:100%;border-radius:8px;box-shadow:0 2px 8px #000a;" oncontextmenu="return false;">
+                            <source src="Videos/Radio Dos Guias - OGuia.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                    </div>
                 </div>
                 <!-- Espaço para conteúdo da rádio, se desejar adicionar -->
             </div>
@@ -228,17 +230,12 @@
                 setTimeout(() => sideMenu.style.display = 'none', 300);
             }
         });
-        // Troca para o segundo vídeo ao terminar o primeiro
+        // Troca para o vídeo do YouTube ao terminar o primeiro
         document.addEventListener('DOMContentLoaded', function() {
             var video = document.getElementById('radioVideo');
-            var changed = false;
+            var container = document.getElementById('videoContainer');
             video.addEventListener('ended', function() {
-                if (!changed) {
-                    video.src = "Videos/Radio Dos Guias 2 - OGuia.mp4";
-                    video.load();
-                    video.play();
-                    changed = true;
-                }
+                container.innerHTML = '<div style="width:100%;aspect-ratio:16/9;position:relative;border-radius:8px;box-shadow:0 2px 8px #000a;overflow:hidden;"><iframe src="https://www.youtube.com/embed/C7HGMioXWDg?autoplay=1" title="Radio Dos Guias 2" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:8px;"></iframe></div>';
             });
         });
     </script>
